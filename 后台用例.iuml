@@ -1,0 +1,25 @@
+@startuml 后台用例-系统管理
+actor 店方管理者 as gl
+
+gl -left-> (审核注册用户)
+(审核注册用户) -down-> (查看用户信息): <include>
+
+gl -down-> (留言管理)
+(留言管理) <|-down- (回复留言)
+(回复留言) -down-> (查看留言): <include>
+(留言管理) <|-down- (删除留言)
+(删除留言) -down-> (查看留言): <include>
+' (留言管理) <|-down- (查看留言)
+
+gl -right-> (友链管理)
+(友链管理) <|-down- (新增友链)
+(友链管理) <|-right- (删除友链)
+(新增友链) -right-> (查看友链): <include>
+(删除友链) -down-> (查看友链): <include>
+
+
+
+gl -up-> (信息反馈处理)
+
+
+@enduml
