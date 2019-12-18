@@ -1,8 +1,14 @@
 @startuml 后台用例-系统管理
 actor 店方管理者 as gl
 
-gl -left-> (审核注册用户)
+
+gl -left-> (用户管理)
+
+(用户管理) <|-left- (审核注册用户)
+(用户管理) <|-down- (删除用户)
+
 (审核注册用户) -down-> (查看用户信息): <include>
+(删除用户) -left-> (查看用户信息): <include>
 
 gl -down-> (留言管理)
 (留言管理) <|-down- (回复留言)
@@ -20,6 +26,6 @@ gl -right-> (友链管理)
 
 
 gl -up-> (信息反馈处理)
-
+(信息反馈处理) -> (查看订单) : <include>
 
 @enduml
