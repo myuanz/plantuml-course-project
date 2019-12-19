@@ -1,0 +1,42 @@
+@startuml 后台用例-系统管理
+skinparam classAttributeFontName Consolas
+
+class 注册用户 {
+    varchar_12	称谓
+    varchar_11	联系电话
+    datetime	注册日期
+	int		注册IP
+	varchar_32	配送地址
+	varchar_128	备注 // 店家用
+}
+class 图片 {
+	varchar_128	图片路径
+}
+class 菜品 {
+    varchar_12	名
+	decimal_10_2	价格
+	int		库存
+	int		已售出
+	bool		是否上架
+}
+class 购物条目 {
+    int 数量
+}
+class 购物车 {
+	bool	是否已完结
+}
+class 订单 {
+	decimal_10_2	价格
+	datetime	订单创建时间
+	datetime	订单支付时间
+	datetime	订单配送时间
+	datetime	订单完结时间
+	enum		订单状态
+}
+注册用户 "1"--"0...n" 订单 : 下单 >
+订单 "0...1"-right-"1" 购物车 : 源自 > 
+注册用户 "1"--"0...n" 购物车 
+购物车 -- 购物条目 : 包含 >
+购物条目 -left- 菜品 : 对应 >
+菜品 -- 图片 : 使用 >
+@enduml
