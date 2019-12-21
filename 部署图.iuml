@@ -1,0 +1,17 @@
+@startuml 包图
+
+node 入口节点
+node 消息队列节点们
+node 处理节点们
+node 数据库
+
+
+cloud 外部请求
+cloud CDN
+
+外部请求 -up-> CDN: 菜品请求
+外部请求 -right-> 入口节点: 非菜品请求
+入口节点 -right-> 消息队列节点们
+消息队列节点们 <-right- 处理节点们: 请求订单
+处理节点们 -> 数据库: 持久化
+@enduml
