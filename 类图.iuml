@@ -1,4 +1,4 @@
-@startuml 后台用例-系统管理
+@startuml 类图
 skinparam classAttributeFontName Consolas
 
 class 注册用户 {
